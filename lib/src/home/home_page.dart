@@ -20,7 +20,11 @@ class _HomePageState extends State<HomePage> {
           AppbarWidget(),
           ListView(
             padding: EdgeInsets.fromLTRB(
-                40, 60 + MediaQuery.of(context).viewPadding.top, 40, 80),
+              40,
+              60 + MediaQuery.of(context).viewPadding.top,
+              40,
+              80 + MediaQuery.of(context).viewPadding.bottom,
+            ),
             physics: BouncingScrollPhysics(),
             children: <Widget>[
               CardWidget(
