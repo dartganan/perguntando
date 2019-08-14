@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:perguntando/src/login/login_module.dart';
 import 'package:radial_button/widget/circle_floating_button.dart';
 
+import 'login_bloc.dart';
 import 'pages/page_login/page_login_page.dart';
 import 'pages/page_register/page_register_page.dart';
 
@@ -10,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var bloc = LoginModule.to.getBloc<LoginBloc>();
+
   var itemsActionBar = [
     FloatingActionButton(
       backgroundColor: Colors.greenAccent,
@@ -38,8 +42,8 @@ class _LoginPageState extends State<LoginPage> {
             right: 0,
             top: 0,
             bottom: 0,
-            child: Image.network(
-              "https://www.fluttertalks.com.br/images/hero-area/bg2.jpg",
+            child: Image.asset(
+              "assets/background.png",
               fit: BoxFit.cover,
             ),
           ),
@@ -48,19 +52,10 @@ class _LoginPageState extends State<LoginPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
           ),
-          PageView.builder(
-            itemCount: 2,
-            itemBuilder: (_, index) {
-              switch (index) {
-                case 0:
-               return   PageLoginPage();
-                  break;
-                case 1:
-                  return PageRegisterPage();
-                  break;
-                default:
-              }
-            },
+          PageView(
+            physics: NeverScrollableScrollPhysics(),
+            controller: bloc.pageController,
+            children: <Widget>[PageLoginPage(), PageRegisterPage()],
           ),
           Positioned(
               top: 0,
