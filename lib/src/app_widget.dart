@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login/login_module.dart';
+import 'package:perguntando/src/home/home_module.dart';
+
 
 class AppWidget extends StatelessWidget {
   @override
