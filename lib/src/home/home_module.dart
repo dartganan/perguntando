@@ -1,3 +1,4 @@
+import 'package:perguntando/src/home/appbar/appbar_bloc.dart';
 import 'package:perguntando/src/home/bottom/bottom_bloc.dart';
 import 'package:perguntando/src/home/card/card_bloc.dart';
 import 'package:perguntando/src/home/background/background_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:perguntando/src/home/home_page.dart';
 class HomeModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => AppbarBloc()),
         Bloc((i) => BottomBloc()),
         Bloc((i) => CardBloc()),
         Bloc((i) => BackgroundBloc()),
