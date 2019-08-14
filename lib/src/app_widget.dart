@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/home_module.dart';
 
+import 'login/login_module.dart';
+
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeModule(),
+      home: LoginModule(),
     );
   }
 }
