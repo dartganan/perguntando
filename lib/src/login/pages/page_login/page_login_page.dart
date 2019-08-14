@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:perguntando/src/answer_page.dart';
 
 import '../../login_bloc.dart';
 import '../../login_module.dart';
