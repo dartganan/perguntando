@@ -16,6 +16,7 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       elevation: 10,
       child: Container(
         height: 170,
