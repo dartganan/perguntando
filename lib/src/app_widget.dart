@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'home/home_module.dart';
 import 'login/login_module.dart';
 
 class AppWidget extends StatelessWidget {

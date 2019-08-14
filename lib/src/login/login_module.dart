@@ -10,8 +10,6 @@ class LoginModule extends ModuleWidget {
   List<Bloc> get blocs => [
         Bloc((i) => PageLoginBloc()),
         Bloc((i) => PageRegisterBloc()),
-        Bloc((i) => PageRegisterBloc()),
-        Bloc((i) => PageLoginBloc()),
         Bloc((i) => LoginBloc()),
       ];
 
