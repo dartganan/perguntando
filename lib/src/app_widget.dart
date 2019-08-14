@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'home/home_module.dart';
 import 'login/login_module.dart';
 
 class AppWidget extends StatelessWidget {
@@ -7,10 +8,13 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Slidy',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF1565C0),
+        backgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: LoginModule(),
+      home: HomeModule(), //LoginModule(),
     );
   }
 }
