@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:perguntando/src/home/card/card_widget.dart';
+import 'package:perguntando/src/shared/card/card_widget.dart';
 import 'package:perguntando/src/shared/components/drawer/custom_drawer.dart';
 
 import 'appbar/appbar_widget.dart';
@@ -30,34 +30,30 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               CardWidget(
                 title: "Flutter Talks Brasil",
-                location: "São Paulo/SP",
-                date: "Hoje",
-                imageUrl:
-                    "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
+                subtitle: "São Paulo/SP\nHoje",
+                imageUrl: "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
+                onPressed: () {},
               ),
               SizedBox(height: 25),
               CardWidget(
                 title: "Meetup Flutterando",
-                location: "Hortolândia/SP",
-                date: "02/09/2019",
-                imageUrl:
-                    "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
+                subtitle: "Hortolândia/SP\n02/09/2019",
+                imageUrl: "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
+                onPressed: () {},
+              ),
+              SizedBox(height: 25),
+              CardWidget(
+                title: "Flutter Talks Brasil",
+                subtitle: "São Paulo/SP\nHoje",
+                imageUrl: "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
+                onPressed: () {},
               ),
               SizedBox(height: 25),
               CardWidget(
                 title: "Meetup Flutterando",
-                location: "Hortolândia/SP",
-                date: "02/09/2019",
-                imageUrl:
-                    "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
-              ),
-              SizedBox(height: 25),
-              CardWidget(
-                title: "Meetup Flutterando",
-                location: "Hortolândia/SP",
-                date: "02/09/2019",
-                imageUrl:
-                    "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
+                subtitle: "Hortolândia/SP\n02/09/2019",
+                imageUrl: "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
+                onPressed: () {},
               ),
             ],
           ),
