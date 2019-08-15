@@ -25,15 +25,23 @@ class _QuestionPageState extends State<QuestionPage> {
           size: 28,
         ),
         onPressed: () {
-          Navigator.push(
+          // Navigator.push(
+          //   context,
+          //   PageRouteBuilder(
+          //     transitionDuration: Duration(milliseconds: 500),
+          //     pageBuilder: (context, go, back) => NewQuestionPage(),
+          //     transitionsBuilder: (context, go, back, widget) => FadeTransition(
+          //       opacity: go,
+          //       child: widget,
+          //     ),
+          //   ),
+          // );
+           Navigator.push(
             context,
-            PageRouteBuilder(
-              transitionDuration: Duration(milliseconds: 500),
-              pageBuilder: (context, go, back) => NewQuestionPage(),
-              transitionsBuilder: (context, go, back, widget) => FadeTransition(
-                opacity: go,
-                child: widget,
-              ),
+            MaterialPageRoute(
+              fullscreenDialog: true,
+              builder: (BuildContext context) => NewQuestionPage(),
+        
             ),
           );
         },
