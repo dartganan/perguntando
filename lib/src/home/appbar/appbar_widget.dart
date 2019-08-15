@@ -13,7 +13,7 @@ class AppbarWidget extends StatelessWidget {
               color: Colors.white,
               size: 30,
             ),
-            onPressed: () {},
+            onPressed: Scaffold.of(context).openDrawer,
           ),
           IconButton(
             icon: Icon(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/card/card_widget.dart';
+import 'package:perguntando/src/shared/components/drawer/custom_drawer.dart';
 
 import 'appbar/appbar_widget.dart';
 import 'background/background_widget.dart';
@@ -14,10 +15,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerWidget(),
       body: Stack(
         children: <Widget>[
           BackgroundWidget(),
-          AppbarWidget(),
           ListView(
             padding: EdgeInsets.fromLTRB(
               40,
@@ -64,6 +65,7 @@ class _HomePageState extends State<HomePage> {
             bottom: 0,
             child: BottomWidget(),
           ),
+          AppbarWidget(),
         ],
       ),
     );
