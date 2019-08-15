@@ -17,6 +17,8 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  cached_network_image: ^1.1.1
+  animated_card: ^1.0.0+6
   shimmer: ^1.0.0
   hasura_connect: ^0.0.8
   radial_button: ^0.1.2

@@ -28,8 +28,6 @@ class _HomePageState extends State<HomePage> {
             ),
             physics: BouncingScrollPhysics(),
             children: <Widget>[
-              CardShimmer(),
-              SizedBox(height: 25),
               CardWidget(
                 title: "Flutter Talks Brasil",
                 subtitle: "São Paulo/SP\nHoje",
