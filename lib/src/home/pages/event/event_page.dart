@@ -53,11 +53,13 @@ class _EventPageState extends State<EventPage> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
+                String tag = "question_$index";
                 return CardEvent(
+                  tag: tag,
                   onPressed: (){
                      Navigator.push(context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                        return QuestionModule();
+                        return QuestionModule(tag);
                       }));
                   },
                 );
