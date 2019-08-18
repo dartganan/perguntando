@@ -22,6 +22,7 @@ class _EventPageState extends State<EventPage> {
       backgroundColor: Theme.of(context).primaryColor,
       body: 
       ScrollableContentWidget(
+        crossAxisAlignment: CrossAxisAlignment.start,
             padding: const EdgeInsets.symmetric(horizontal: 20),
         children: <Widget>[
           CircleAvatar(
