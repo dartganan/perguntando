@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/pages/event/event_module.dart';
 import 'package:perguntando/src/shared/card/card_widget.dart';
-import 'package:perguntando/src/shared/components/drawer/custom_drawer.dart';
+import 'package:perguntando/src/shared/widgets/drawer/custom_drawer.dart';
 
 import 'appbar/appbar_widget.dart';
 import 'background/background_widget.dart';
