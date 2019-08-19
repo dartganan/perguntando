@@ -3,10 +3,9 @@ import 'package:hasura_connect/hasura_connect.dart';
 import 'package:perguntando/src/shared/models/event_model.dart';
 
 class HomeRepository extends Disposable {
- 
-   final HasuraConnect conn;
+  final HasuraConnect _conn;
 
-  HomeRepository(this.conn);
+  HomeRepository(this._conn);
 
   Stream<List<EventModel>> getEvents() {
     var query = '''subscription {
@@ -24,17 +23,17 @@ class HomeRepository extends Disposable {
                       }
                     }''';
     try {
-      Snapshot snapshot = conn.subscription(query);
+      Snapshot snapshot = _conn.subscription(query);
       return snapshot.stream.map(
         (json) => EventModel.fromJsonList(json['data']['event']),
       );
-    } on HasuraError catch (e) {     
+    } on HasuraError catch (e) {
       print(e);
-      print(e.extensions);    
+      print(e.extensions);
       return null;
-    }  
+    }
   }
-  
+
   @override
   void dispose() {}
 }

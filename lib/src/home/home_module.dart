@@ -1,3 +1,4 @@
+import 'package:hasura_connect/hasura_connect.dart';
 import 'package:perguntando/src/home/repository/home_repository.dart';
 import 'package:perguntando/src/home/appbar/appbar_bloc.dart';
 import 'package:perguntando/src/home/bottom/bottom_bloc.dart';
@@ -15,12 +16,12 @@ class HomeModule extends ModuleWidget {
         Bloc((i) => AppbarBloc()),
         Bloc((i) => BottomBloc()),
         Bloc((i) => BackgroundBloc()),
-        Bloc((i) => HomeBloc()),
+        Bloc((i) => HomeBloc(i.get<HomeRepository>())),
       ];
 
   @override
   List<Dependency> get dependencies => [
-        Dependency((i) => HomeRepository(AppModule.to.getBloc())),
+        Dependency((i) => HomeRepository(AppModule.to.get<HasuraConnect>())),
       ];
 
   @override
