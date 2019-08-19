@@ -20,6 +20,7 @@ class _QuestionPageState extends State<QuestionPage> {
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: "a",
+        backgroundColor: Theme.of(context).primaryColor,
         child: Icon(
           Icons.add,
           size: 28,

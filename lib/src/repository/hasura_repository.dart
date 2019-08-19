@@ -1,8 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:hasura_connect/hasura_connect.dart';
-import 'package:perguntando/src/shared/models/event_model.dart';
-import 'package:perguntando/src/shared/models/lecture_model.dart';
+import 'package:perguntando/src/shared/models/event/event_model.dart';
+import 'package:perguntando/src/shared/models/event/lecture_model.dart';
 import 'package:perguntando/src/shared/models/lecture_question_liked_model.dart';
 import 'package:perguntando/src/shared/models/lecture_question_model.dart';
 import 'package:perguntando/src/shared/models/user_model.dart';

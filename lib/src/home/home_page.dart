@@ -3,6 +3,7 @@ import 'package:perguntando/src/home/home_module.dart';
 import 'package:perguntando/src/home/pages/event/event_module.dart';
 import 'package:perguntando/src/shared/card/card_widget.dart';
 import 'package:perguntando/src/shared/components/drawer/custom_drawer.dart';
+import 'package:perguntando/src/shared/models/event/event_model.dart';
 import 'package:perguntando/src/shared/models/event_model.dart';
 
 import 'appbar/appbar_widget.dart';

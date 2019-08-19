@@ -1,4 +1,3 @@
-import 'lecture_model.dart';
 
 class EventModel {
   int idEvent;
@@ -54,7 +53,7 @@ class EventModel {
 
   static List<EventModel> fromJsonList(List list) {
     if (list == null) return null;
-    return list.map((item) => EventModel.fromJson(item)).toList();
+    return list.map<EventModel>((item) => EventModel.fromJson(item)).toList();
   }
 
   @override
