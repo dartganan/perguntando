@@ -6,8 +6,8 @@ class HomeRepository extends Disposable {
   final HasuraConnect _conn;
 
   HomeRepository(this._conn);
+  Snapshot snapshot;
 
- //--
   Stream<List<EventModel>> getEvents() {
     var query = '''subscription {
                       event(where: {info_status: {_eq: true}}, order_by: {info_date: asc}) {
@@ -24,7 +24,7 @@ class HomeRepository extends Disposable {
                       }
                     }''';
     try {
-      Snapshot snapshot = _conn.subscription(query);
+      snapshot = _conn.subscription(query);
       return snapshot.stream.map(
         (json) => EventModel.fromJsonList(json['data']['event']),
       );
@@ -34,9 +34,11 @@ class HomeRepository extends Disposable {
       print(e.extensions);
       print('=================');
       return null;
-    }  
+    }
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    snapshot.close();
+  }
 }

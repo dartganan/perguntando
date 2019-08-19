@@ -5,10 +5,13 @@ import 'package:rxdart/rxdart.dart';
 import 'repository/home_repository.dart';
 
 class HomeBloc extends BlocBase {
-  final HomeRepository repository;
-  HomeBloc(this.repository);
+  final HomeRepository _repository;
 
-  Observable<List<EventModel>> get eventsStream => Observable(repository.getEvents());
+  HomeBloc(this._repository) {
+    eventsStream = Observable(_repository.getEvents());
+  }
+
+  Observable<List<EventModel>> eventsStream;
 
   @override
   void dispose() {
