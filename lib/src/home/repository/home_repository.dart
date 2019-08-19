@@ -21,6 +21,15 @@ class HomeRepository extends Disposable {
                         city
                         state
                         location
+                        lectures{
+                          id_lecture
+                          name
+                          description
+                          info_date
+                          presenter {
+                            name
+                          }
+                        }
                       }
                     }''';
     try {

@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:perguntando/src/shared/models/event/lecture_model.dart';
 
 class CardEvent extends StatelessWidget {
+  final LectureModel lectureModel;
   final Function onPressed;
   final String tag;
 
-  const CardEvent({
-    Key key,
-    this.onPressed,
-    @required this.tag,
-  }) : super(key: key);
+  const CardEvent(
+      {Key key, this.onPressed, @required this.tag, this.lectureModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class CardEvent extends StatelessWidget {
                       child: CircleAvatar(
                         maxRadius: 30,
                         backgroundImage: CachedNetworkImageProvider(
-                          "https://i.udemycdn.com/user/200_H/51101684_c590_2.jpg",
+                          "${lectureModel?.presenter?.photo}",
                         ),
                       ),
                     ),
@@ -53,7 +53,7 @@ class CardEvent extends StatelessWidget {
                       child: Material(
                         color: Colors.transparent,
                         child: Text(
-                          "10:00",
+                          "${lectureModel?.infoDate}",
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class CardEvent extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     child: Text(
-                      "Jacob Moura",
+                      "${lectureModel?.presenter?.name}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700],
@@ -84,7 +84,7 @@ class CardEvent extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     child: Text(
-                      "Nunca diga não para o seu designer",
+                      "${lectureModel?.name}",
                       style: TextStyle(color: Colors.grey[700], fontSize: 18),
                     ),
                   ),

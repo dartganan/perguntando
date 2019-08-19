@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   itemCount: snapshot.data.length,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (_, index) {
-                    var date = DateTime.parse(snapshot?.data[index]?.infoDate);
+                    var date = DateTime.tryParse(snapshot?.data[index]?.infoDate);
 
                     return CardWidget(
                       title: snapshot.data[index].name,
@@ -56,7 +56,9 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return EventModule();
+                          return EventModule(
+                            snapshot.data[index]
+                          );
                         }));
                       },
                     );

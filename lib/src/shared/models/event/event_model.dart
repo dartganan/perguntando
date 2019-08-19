@@ -1,3 +1,4 @@
+import 'package:perguntando/src/shared/models/event/lecture_model.dart';
 
 class EventModel {
   int idEvent;
@@ -10,6 +11,7 @@ class EventModel {
   String city;
   String state;
   String location;
+  List<LectureModel> lectures;
 
   EventModel(
       {this.idEvent,
@@ -21,7 +23,8 @@ class EventModel {
       this.infoStatus,
       this.city,
       this.state,
-      this.location});
+      this.location,
+      this.lectures});
 
   EventModel.fromJson(Map<String, dynamic> json) {
     idEvent = json['id_event'];
@@ -34,6 +37,12 @@ class EventModel {
     city = json['city'];
     state = json['state'];
     location = json['location'];
+    if (json['lectures'] != null) {
+      lectures = new List<LectureModel>();
+      json['lectures'].forEach((v) {
+        lectures.add(new LectureModel.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -48,6 +57,9 @@ class EventModel {
     data['city'] = this.city;
     data['state'] = this.state;
     data['location'] = this.location;
+    if (this.lectures != null) {
+      data['lectures'] = this.lectures.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 

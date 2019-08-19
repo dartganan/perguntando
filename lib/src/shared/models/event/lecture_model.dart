@@ -1,3 +1,5 @@
+import 'package:perguntando/src/shared/utils/date_utils.dart';
+
 import 'presenter_model.dart';
 
 class LectureModel {
@@ -16,11 +18,13 @@ class LectureModel {
       this.idEvent,
       this.presenter});
 
+     
+
   LectureModel.fromJson(Map<String, dynamic> json) {
     idLecture = json['id_lecture'];
     name = json['name'];
     description = json['description'];
-    infoDate = json['info_date'];
+    infoDate = format(DateTime.tryParse(json['info_date']),'dd/MM/yyyy');
     idEvent = json['id_event'];
     presenter = json['presenter'] != null
         ? new PresenterModel.fromJson(json['presenter'])

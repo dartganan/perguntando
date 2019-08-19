@@ -1,12 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/pages/question/question_module.dart';
+import 'package:perguntando/src/shared/models/event/event_model.dart';
 import 'package:perguntando/src/shared/widgets/scrollable_content/scrollable_content_widget.dart';
 
 import 'components/card_event.dart';
 
 
 class EventPage extends StatefulWidget {
+   final EventModel eventModel;
+
+  const EventPage({Key key, this.eventModel}) : super(key: key);
+
   @override
   _EventPageState createState() => _EventPageState();
 }
@@ -28,15 +33,15 @@ class _EventPageState extends State<EventPage> {
           CircleAvatar(
                   maxRadius: 40,
                   backgroundImage: CachedNetworkImageProvider(
-                      "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg"),
+                      "${widget.eventModel?.urlPhoto}"),
                 ),
                 Container(height: 10,),
-                Text("Nome do evento",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18 ),),
+                Text("${widget.eventModel?.name}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18 ),),
                 Container(height: 10,),
-                Text("12/01/1919", style: TextStyle(color: Colors.white, fontSize: 14 ),),
+                Text("${widget.eventModel?.infoDate}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
                 Container(height: 15,),
                 Text(
-                    "djiedfjofijsofijsofijsefoisjefoisejfosifjosfijosifjoseifjsofijsoefijso ijseof jsefo isjfo eisfj osifjo sijo", style: TextStyle(color: Colors.white, fontSize: 14 ),),
+                    "${widget.eventModel?.description}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
         ],
         button: SafeArea(
           child: Container(
@@ -46,12 +51,14 @@ class _EventPageState extends State<EventPage> {
                 width: double.infinity,
                 height: 280,
                 child: ListView.separated(
-                  itemCount: 4,
+                  itemCount: widget.eventModel.lectures.length,
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
+                    final lecture = widget.eventModel.lectures[index];
                     String tag = "question_$index";
                     return CardEvent(
+                      lectureModel: lecture,
                       tag: tag,
                       onPressed: (){
                          Navigator.push(context,
