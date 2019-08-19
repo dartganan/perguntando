@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/home_module.dart';
 import 'package:perguntando/src/home/pages/event/event_module.dart';
 import 'package:perguntando/src/shared/card/card_widget.dart';
-import 'package:perguntando/src/shared/components/drawer/custom_drawer.dart';
 import 'package:perguntando/src/shared/models/event/event_model.dart';
-import 'package:perguntando/src/shared/models/event_model.dart';
-
+import 'package:perguntando/src/shared/widgets/drawer/custom_drawer.dart';
 import 'appbar/appbar_widget.dart';
 import 'background/background_widget.dart';
 import 'bottom/bottom_widget.dart';
@@ -44,12 +42,16 @@ class _HomePageState extends State<HomePage> {
                   ),
                   itemCount: snapshot.data.length,
                   physics: BouncingScrollPhysics(),
-                  itemBuilder: (_,index){
-                      return CardWidget(
-                      title: "Flutter Talks Brasil",
-                      subtitle: "São Paulo/SP",
-                      date: "Hoje",
-                      imageUrl:
+                  itemBuilder: (_, index) {
+                    var date = DateTime.parse(snapshot?.data[index]?.infoDate);
+
+                    return CardWidget(
+                      title: snapshot.data[index].name,
+                      subtitle:
+                          "${snapshot.data[index].city}/${snapshot.data[index].state}",
+                      date:
+                          "${date.day.toString().padLeft(2, "0")}-${date.month.toString().padLeft(2, "0")}-${date.year}",
+                      imageUrl: snapshot.data[index].urlPhoto ??
                           "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
                       onPressed: () {
                         Navigator.push(context,
@@ -59,9 +61,9 @@ class _HomePageState extends State<HomePage> {
                       },
                     );
                   },
-                  separatorBuilder: (_, index){
-                      return  SizedBox(height: 25);
-                  },                
+                  separatorBuilder: (_, index) {
+                    return SizedBox(height: 25);
+                  },
                 );
               }),
           Positioned(

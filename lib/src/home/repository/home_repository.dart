@@ -1,12 +1,13 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:hasura_connect/hasura_connect.dart';
-import 'package:perguntando/src/shared/models/event_model.dart';
+import 'package:perguntando/src/shared/models/event/event_model.dart';
 
 class HomeRepository extends Disposable {
   final HasuraConnect _conn;
 
   HomeRepository(this._conn);
 
+ //--
   Stream<List<EventModel>> getEvents() {
     var query = '''subscription {
                       event(where: {info_status: {_eq: true}}, order_by: {info_date: asc}) {
@@ -28,10 +29,12 @@ class HomeRepository extends Disposable {
         (json) => EventModel.fromJsonList(json['data']['event']),
       );
     } on HasuraError catch (e) {
+      print('LOGX ==:>> ERROR[getEvents]');
       print(e);
       print(e.extensions);
+      print('=================');
       return null;
-    }
+    }  
   }
 
   @override
