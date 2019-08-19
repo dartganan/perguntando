@@ -31,38 +31,38 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               CardWidget(
                 title: "Flutter Talks Brasil",
-                subtitle: "São Paulo/SP\nHoje",
-                imageUrl:
-                    "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
+                subtitle: "São Paulo/SP",
+                date: "Hoje",
+                imageUrl: "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                        return EventModule();
-                      }));
+                    return EventModule();
+                  }));
                 },
               ),
               SizedBox(height: 25),
               CardWidget(
                 title: "Meetup Flutterando",
-                subtitle: "Hortolândia/SP\n02/09/2019",
-                imageUrl:
-                    "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
+                subtitle: "Hortolândia/SP",
+                date: "02/09/2019",
+                imageUrl: "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
                 onPressed: () {},
               ),
               SizedBox(height: 25),
               CardWidget(
                 title: "Flutter Talks Brasil",
-                subtitle: "São Paulo/SP\nHoje",
-                imageUrl:
-                    "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
+                subtitle: "São Paulo/SP",
+                date: "Hoje",
+                imageUrl: "https://eventostech.com.br/wp-content/uploads/2019/06/flutter-talks-br-eventostech-800x450.jpg",
                 onPressed: () {},
               ),
               SizedBox(height: 25),
               CardWidget(
                 title: "Meetup Flutterando",
-                subtitle: "Hortolândia/SP\n02/09/2019",
-                imageUrl:
-                    "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
+                subtitle: "Hortolândia/SP",
+                date: "02/09/2019",
+                imageUrl: "https://secure.meetupstatic.com/photos/event/4/8/7/c/highres_483018556.jpeg",
                 onPressed: () {},
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:perguntando/src/home/repository/home_repository.dart';
 import 'package:perguntando/src/home/appbar/appbar_bloc.dart';
 import 'package:perguntando/src/home/bottom/bottom_bloc.dart';
 import 'package:perguntando/src/home/background/background_bloc.dart';
@@ -5,6 +6,8 @@ import 'package:perguntando/src/home/home_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/home_page.dart';
+
+import '../app_module.dart';
 
 class HomeModule extends ModuleWidget {
   @override
@@ -16,7 +19,9 @@ class HomeModule extends ModuleWidget {
       ];
 
   @override
-  List<Dependency> get dependencies => [];
+  List<Dependency> get dependencies => [
+        Dependency((i) => HomeRepository(AppModule.to.getBloc())),
+      ];
 
   @override
   Widget get view => HomePage();
