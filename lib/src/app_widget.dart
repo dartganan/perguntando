@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/home_module.dart';
 
-
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
