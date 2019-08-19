@@ -8,6 +8,7 @@ class CardWidget extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String subtitle;
+  final String date;
   final void Function() onPressed;
 
   const CardWidget({
@@ -16,6 +17,7 @@ class CardWidget extends StatelessWidget {
     @required this.imageUrl,
     @required this.subtitle,
     @required this.onPressed,
+    @required this.date,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,14 @@ class CardWidget extends StatelessWidget {
                               ),
                               Text(
                                 subtitle,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                date ?? "",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 14,

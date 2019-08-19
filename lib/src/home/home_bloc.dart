@@ -1,8 +1,18 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:perguntando/src/shared/models/event/event_model.dart';
+import 'package:rxdart/rxdart.dart';
+
+import 'repository/home_repository.dart';
 
 class HomeBloc extends BlocBase {
-  
-  //dispose will be called automatically by closing its streams
+  final HomeRepository _repository;
+
+  HomeBloc(this._repository) {
+    eventsStream = Observable(_repository.getEvents()).shareValue();
+  }
+
+  Observable<List<EventModel>> eventsStream;
+
   @override
   void dispose() {
     super.dispose();
