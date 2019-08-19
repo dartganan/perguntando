@@ -55,7 +55,9 @@ class _EventPageState extends State<EventPage> {
                       tag: tag,
                       onPressed: (){
                          Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
+                          MaterialPageRoute(
+                            fullscreenDialog: true,
+                            builder: (BuildContext context) {
                             return QuestionModule(tag);
                           }));
                       },
