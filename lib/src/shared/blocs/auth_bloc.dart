@@ -8,13 +8,15 @@ import 'package:rxdart/rxdart.dart';
 class AuthBloc extends BlocBase {
   final _userController = BehaviorSubject<UserModel>();
   final _tokenController = BehaviorSubject<String>();
-  final _userStateController = BehaviorSubject<AuthState>.seeded(NotAuthenticated());
+  final _userStateController =
+      BehaviorSubject<AuthState>.seeded(NotAuthenticated());
   StreamSubscription tokenSub;
 
   AuthBloc() {
     tokenSub = _tokenController.listen((token) {
-      if (token.isEmpty) {
+      if (token == null) {
         _userStateController.add(NotAuthenticated());
+        _userController.add(null);
       } else {
         _userStateController.add(Authenticated());
       }
