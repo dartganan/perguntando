@@ -16,8 +16,6 @@ class LoginModule extends ModuleWidget {
               i.get<HasuraRepository>(),
             )),
         Bloc((i) => PageRegisterBloc(
-              AppModule.to.bloc<AuthBloc>(),
-              i.get<HasuraRepository>(),
             )),
         Bloc((i) => LoginBloc()),
       ];
