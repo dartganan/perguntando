@@ -6,6 +6,7 @@ import 'app_module.dart';
 import 'login/login_module.dart';
 import 'shared/blocs/auth_bloc.dart';
 
+
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

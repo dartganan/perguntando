@@ -10,14 +10,10 @@ class _NewQuestionPageState extends State<NewQuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color:Theme.of(context).primaryColor),
+       // iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.blue[800]),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         title: Text(
           "Nova pergunta",
           style: TextStyle(color: Colors.grey, fontSize: 16.5),
