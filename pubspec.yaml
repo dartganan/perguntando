@@ -14,9 +14,10 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.4.0 <3.0.0"
 
 dependencies:
+  encrypt: ^3.2.0
   cached_network_image: ^1.1.1
   animated_card: ^1.0.0+6
   shimmer: ^1.0.0
@@ -25,6 +26,7 @@ dependencies:
   dio: ^2.1.13
   rxdart: ^0.22.1+1
   bloc_pattern: ^2.2.3
+  validators: ^2.0.0+1
   flutter:
     sdk: flutter
 
