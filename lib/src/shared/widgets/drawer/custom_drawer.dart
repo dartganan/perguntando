@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/app_module.dart';
 import 'package:perguntando/src/shared/blocs/auth_bloc.dart';
-import 'package:perguntando/src/shared/models/user_state.dart';
 
 import '../../models/user_model.dart';
 
@@ -83,23 +82,18 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 ),
               ),
               Spacer(),
-              InkWell(
-                onTap: () {
-                  bloc.inToken.add(null);
-                },
-                child: Container(
-                  height: 50,
-                  color: Colors.white,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.transit_enterexit,
-                      color: Colors.black,
-                      size: 35,
-                    ),
-                    title: Text(
-                      "SAIR",
-                      style: TextStyle(color: Colors.black),
-                    ),
+              Container(
+                height: 50,
+                color: Colors.white,
+                child: ListTile(
+                  leading: Icon(
+                    Icons.transit_enterexit,
+                    color: Colors.black,
+                    size: 35,
+                  ),
+                  title: Text(
+                    "SAIR",
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
