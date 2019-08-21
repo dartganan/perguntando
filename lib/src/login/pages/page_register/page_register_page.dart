@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../login_bloc.dart';
 import '../../login_module.dart';
+import 'page_register_bloc.dart';
 
 class PageRegisterPage extends StatefulWidget {
   @override
@@ -9,7 +11,9 @@ class PageRegisterPage extends StatefulWidget {
 }
 
 class _PageRegisterPageState extends State<PageRegisterPage> {
-  var bloc = LoginModule.to.getBloc<LoginBloc>();
+  var loginBloc = LoginModule.to.getBloc<LoginBloc>();
+  var bloc = LoginModule.to.getBloc<PageRegisterBloc>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,30 +60,43 @@ class _PageRegisterPageState extends State<PageRegisterPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
+                      child: CupertinoTextField(
+                        controller: bloc.nameController,
                         maxLines: 1,
                         style: TextStyle(
                           color: Color(0xffA7A7A7),
                         ),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          alignLabelWithHint: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          hasFloatingPlaceholder: false,
-                          labelText: "seu nome",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
-                          ),
+                        placeholder: 'seu nome',
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      child: CupertinoTextField(
+                        controller: bloc.mailController,
+                        maxLines: 1,
+                        style: TextStyle(
+                          color: Color(0xffA7A7A7),
+                        ),
+                        textAlign: TextAlign.center,
+                        placeholder: 'seu email',
+                         keyboardType: TextInputType.emailAddress,
+                         autocorrect: false,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2),
                         ),
                       ),
                     ),
@@ -88,29 +105,20 @@ class _PageRegisterPageState extends State<PageRegisterPage> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
+                      height: 50,
+                      child: CupertinoTextField(
+                        controller: bloc.passwordController,
                         maxLines: 1,
                         style: TextStyle(
                           color: Color(0xffA7A7A7),
                         ),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          alignLabelWithHint: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          hasFloatingPlaceholder: false,
-                          labelText: "seu email",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
-                          ),
+                        obscureText: true,
+                        placeholder: 'digita sua senha',
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2),
                         ),
                       ),
                     ),
@@ -119,60 +127,21 @@ class _PageRegisterPageState extends State<PageRegisterPage> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
+                      height: 50,
+                      child: CupertinoTextField(
+                        controller: bloc.confirmPasswordController,
                         maxLines: 1,
                         style: TextStyle(
                           color: Color(0xffA7A7A7),
                         ),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          alignLabelWithHint: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          hasFloatingPlaceholder: false,
-                          labelText: "digita sua senha",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: Color(0xffA7A7A7),
-                        ),
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          alignLabelWithHint: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          hasFloatingPlaceholder: false,
-                          labelText: "senha novamente",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
-                          ),
+                        cursorRadius: Radius.circular(50),
+                        placeholder: 'senha novamente',
+                        obscureText: true,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2),
                         ),
                       ),
                     ),
@@ -202,14 +171,16 @@ class _PageRegisterPageState extends State<PageRegisterPage> {
                     Container(
                       padding: EdgeInsets.all(20),
                       child: GestureDetector(
-                        onTap: ()  {
-                            bloc.pageController.animateToPage(0,duration: Duration(milliseconds: 1000), curve: Curves.bounceOut);
+                        onTap: () {
+                          loginBloc.pageController.animateToPage(0,
+                              duration: Duration(milliseconds: 1000),
+                              curve: Curves.bounceOut);
                         },
                         child: Text(
                           "voltar para o login",
                           style: TextStyle(
                               decoration: TextDecoration.underline,
-                            color: Color(0xffA7A7A7),
+                              color: Color(0xffA7A7A7),
                               fontSize: 18,
                               fontWeight: FontWeight.w400),
                         ),

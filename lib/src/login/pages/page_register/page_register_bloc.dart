@@ -1,7 +1,13 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:flutter/cupertino.dart';
 
 class PageRegisterBloc extends BlocBase {
-  //dispose will be called automatically by closing its streams
+  var nameController = TextEditingController();
+  var mailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
+
+
   @override
   void dispose() {
     super.dispose();

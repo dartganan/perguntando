@@ -17,12 +17,10 @@ class _PageLoginPageState extends State<PageLoginPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-//        color: Colors.greenAccent,
         alignment: Alignment.center,
         padding: EdgeInsets.all(25),
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
-          
           child: Column(
             children: <Widget>[
               FlutterLogo(
@@ -85,57 +83,38 @@ class _PageLoginPageState extends State<PageLoginPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
+                      child: CupertinoTextField(
                         maxLines: 1,
                         style: TextStyle( color: Color(0xffA7A7A7),),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          alignLabelWithHint: true,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          hasFloatingPlaceholder: false,
-                          labelText: "email",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
-                          ),
-                        ),
+                        placeholder: 'email',
+                         keyboardType: TextInputType.emailAddress,
+                         autocorrect: false,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2),
+                        ),                     
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     Container(
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
-                      child: TextFormField(
+                      child: CupertinoTextField(
                         maxLines: 1,
                         style: TextStyle( color: Color(0xffA7A7A7),),
                         textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
-                          ),
-                          hasFloatingPlaceholder: false,
-                          labelText: "senha",
-                          labelStyle: TextStyle(
-                             color: Color(0xffA7A7A7),
-                          ),
-                        ),
+                           placeholder: 'senha',
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2),
+                        ),                      
                         obscureText: true,
                       ),
                     ),
