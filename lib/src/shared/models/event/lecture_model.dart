@@ -1,4 +1,4 @@
-import 'package:perguntando/src/shared/models/user_model.dart';
+import 'presenter_model.dart';
 
 class LectureModel {
   int idLecture;
@@ -6,7 +6,7 @@ class LectureModel {
   String description;
   String infoDate;
   int idEvent;
-  UserModel presenter;
+  PresenterModel presenter;
 
   LectureModel(
       {this.idLecture,
@@ -23,7 +23,7 @@ class LectureModel {
     infoDate = json['info_date'];
     idEvent = json['id_event'];
     presenter = json['presenter'] != null
-        ? new UserModel.fromJson(json['presenter'])
+        ? new PresenterModel.fromJson(json['presenter'])
         : null;
   }
 
@@ -39,10 +39,9 @@ class LectureModel {
     }
     return data;
   }
-
   static List<LectureModel> fromJsonList(List list) {
     if (list == null) return null;
-    return list.map((item) => LectureModel.fromJson(item)).toList();
+    return list.map<LectureModel>((item) => LectureModel.fromJson(item)).toList();
   }
 
   @override

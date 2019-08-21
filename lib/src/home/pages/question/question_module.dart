@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/pages/question/question_page.dart';
 
 class QuestionModule extends ModuleWidget {
+  final String tag;
+
+  QuestionModule(this.tag);
   @override
   List<Bloc> get blocs => [
-        Bloc((i) => QuestionBloc()),
+        Bloc((i) => QuestionBloc(tag)),
       ];
 
   @override
