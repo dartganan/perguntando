@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/pages/question/question_module.dart';
 import 'package:perguntando/src/shared/utils/multlerp.dart';

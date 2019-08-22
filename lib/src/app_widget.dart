@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/home/home_module.dart';
 import 'package:perguntando/src/shared/models/user_state.dart';
+import 'package:perguntando/src/splash/splash_page.dart';
 
 import 'app_module.dart';
 import 'login/login_module.dart';
@@ -20,14 +21,7 @@ class AppWidget extends StatelessWidget {
         backgroundColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: StreamBuilder<AuthState>(
-          stream: bloc.outUserState,
-          builder: (context, snapshot) {
-            if (snapshot.data is Authenticated) {
-              return HomeModule();
-            }
-            return LoginModule();
-          }), //LoginModule(),
+      home: SplashPage(), //LoginModule(),
     );
   }
 }

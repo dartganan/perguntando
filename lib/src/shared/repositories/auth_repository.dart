@@ -5,23 +5,29 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:dio/dio.dart';
 import 'package:perguntando/src/shared/utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepository extends Disposable {
   final _dio = Dio();
   Future<Map> getToken(String email, String password) async {
-    Response response;
-    final routerToken = '/auth/v1/gettoken';
     password = generateMd5(password);
     var base64 = Latin1Codec().fuse(Base64Codec());
     String authToken = base64.encode('$email:$password');
     String credentials = 'Basic $authToken';
-    response = await _dio.post(
+    var response = await refreshToken(credentials);
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString('credentials', credentials);
+    return response.data;
+  }
+
+  Future<Response> refreshToken(String credentials) {
+    final routerToken = '/auth/v1/gettoken';
+    return _dio.post(
       API_URL + routerToken,
       options: Options(
         headers: {'Authorization': credentials},
       ),
     );
-    return response.data;
   }
 
   generateMd5(String data) {
