@@ -16,16 +16,19 @@ class _LoginPageState extends State<LoginPage> {
 
   var itemsActionBar = [
     FloatingActionButton(
+      heroTag: "ffreofkprj3093",
       backgroundColor: Colors.greenAccent,
       onPressed: () {},
       child: Icon(Icons.add),
     ),
     FloatingActionButton(
+      heroTag: "dsad3e2fd2",
       backgroundColor: Colors.indigoAccent,
       onPressed: () {},
       child: Icon(Icons.camera),
     ),
     FloatingActionButton(
+      heroTag: "4322fh6jk",
       backgroundColor: Colors.orangeAccent,
       onPressed: () {},
       child: Icon(Icons.card_giftcard),
