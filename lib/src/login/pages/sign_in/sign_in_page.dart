@@ -1,17 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:perguntando/src/app_module.dart';
+import 'package:perguntando/src/shared/blocs/auth_bloc.dart';
+import 'package:perguntando/src/shared/models/user_state.dart';
+
+import 'package:validators/validators.dart' as validators;
 
 import '../../login_bloc.dart';
 import '../../login_module.dart';
+import 'sign_in_bloc.dart';
 
 class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
 }
-
 class _SignInPageState extends State<SignInPage> {
-  var bloc = LoginModule.to.getBloc<LoginBloc>();
-  
+  var bloc = LoginModule.to.getBloc<SignInBloc>();
+  final loginBloc = LoginModule.to.bloc<LoginBloc>();
+  final authBloc = AppModule.to.bloc<AuthBloc>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,23 +86,47 @@ class _SignInPageState extends State<SignInPage> {
                 height: 30,
               ),
               Form(
+                key: bloc.formKey,
                 child: Column(
                   children: <Widget>[
                     Container(
                       height: 50,
                       width: MediaQuery.of(context).size.width,
-                      child: CupertinoTextField(
+                      child: TextFormField(
+                        validator: (v) {
+                          if (v.isEmpty) {
+                            return 'O campo não pode ser vazio';
+                          } else if (!validators.isEmail(v)) {
+                            return 'O email não é válido';
+                          }
+                          return null;
+                        },
+                        onSaved: (v) {
+                          bloc.email = v;
+                        },
                         maxLines: 1,
-                        style: TextStyle( color: Color(0xffA7A7A7),),
+                        style: TextStyle(
+                          color: Color(0xffA7A7A7),
+                        ),
                         textAlign: TextAlign.center,
-                        placeholder: 'email',
-                         keyboardType: TextInputType.emailAddress,
-                         autocorrect: false,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border:
-                              Border.all(color: Colors.blueAccent, width: 2),
-                        ),                     
+                        decoration: InputDecoration(
+                          alignLabelWithHint: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
+                          ),
+                          hasFloatingPlaceholder: false,
+                          labelText: "Email",
+                          labelStyle: TextStyle(
+                            color: Color(0xffA7A7A7),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -105,38 +135,94 @@ class _SignInPageState extends State<SignInPage> {
                     Container(
                       height: 50,
                       width: MediaQuery.of(context).size.width,
-                      child: CupertinoTextField(
+                      child: TextFormField(
+                        validator: (v) {
+                          if (v.isEmpty) {
+                            return 'O campo não pode ser vazio';
+                          } else if (v.length < 4) {
+                            return 'Senha muito curta';
+                          }
+                          return null;
+                        },
+                        onSaved: (v) {
+                          bloc.password = v;
+                        },
                         maxLines: 1,
-                        style: TextStyle( color: Color(0xffA7A7A7),),
+                        style: TextStyle(
+                          color: Color(0xffA7A7A7),
+                        ),
                         textAlign: TextAlign.center,
-                           placeholder: 'senha',
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border:
-                              Border.all(color: Colors.blueAccent, width: 2),
-                        ),                      
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
+                          ),
+                          hasFloatingPlaceholder: false,
+                          labelText: "Senha",
+                          labelStyle: TextStyle(
+                            color: Color(0xffA7A7A7),
+                          ),
+                        ),
                         obscureText: true,
                       ),
                     ),
-                    SizedBox(
-                      height: 50,
-                    ),
+                    StreamBuilder<AuthState>(
+                        stream: authBloc.outUserState,
+                        builder: (context, snapshot) {
+                          if (snapshot.data is Error) {
+                            return SizedBox(
+                              height: 50,
+                              child: Center(
+                                child: Text(
+                                  'Erro na autenticação',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ),
+                            );
+                          }
+                          return SizedBox(
+                            height: 50,
+                          );
+                        }),
                     Container(
                       height: 46,
-                      child: RaisedButton(
-                        shape: StadiumBorder(),
-                        color: Colors.blue,
-                        onPressed: () {},
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40),
-                          child: Text(
-                            "ENTRAR",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
+                      child: StreamBuilder<AuthState>(
+                          stream: authBloc.outUserState,
+                          initialData: NotAuthenticated(),
+                          builder: (context, snapshot) {
+                            if (snapshot.data is Loading) {
+                              return RaisedButton(
+                                shape: StadiumBorder(),
+                                color: Colors.blue,
+                                onPressed: bloc.onLogin,
+                                child: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 40),
+                                    child: CircularProgressIndicator(
+                                        backgroundColor: Colors.white)),
+                              );
+                            }
+                            return RaisedButton(
+                              shape: StadiumBorder(),
+                              color: Colors.blue,
+                              onPressed: bloc.onLogin,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 40),
+                                child: Text(
+                                  "ENTRAR",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            );
+                          }),
                     ),
                     SizedBox(
                       height: 50,
@@ -144,8 +230,10 @@ class _SignInPageState extends State<SignInPage> {
                     Container(
                       padding: EdgeInsets.all(20),
                       child: GestureDetector(
-                        onTap: ()  {
-                          bloc.pageController.animateToPage(1,duration: Duration(milliseconds: 1000), curve: Curves.bounceOut);
+                        onTap: () {
+                          loginBloc.pageController.animateToPage(1,
+                              duration: Duration(milliseconds: 1000),
+                              curve: Curves.bounceOut);
                         },
                         child: Text(
                           "cadastre-se agora",
