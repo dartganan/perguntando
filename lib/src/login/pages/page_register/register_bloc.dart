@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 
-class PageRegisterBloc extends BlocBase {
+class RegisterBloc extends BlocBase {
   var nameController = TextEditingController();
   var mailController = TextEditingController();
   var passwordController = TextEditingController();

@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
         backgroundColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: HomeModule(), //LoginModule(),
+      home: LoginModule(),
     );
   }
 }

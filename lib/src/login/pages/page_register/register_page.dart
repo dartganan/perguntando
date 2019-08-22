@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 
 import '../../login_bloc.dart';
 import '../../login_module.dart';
-import 'page_register_bloc.dart';
+import 'register_bloc.dart';
 
-class PageRegisterPage extends StatefulWidget {
+
+class RegisterPage extends StatefulWidget {
   @override
-  _PageRegisterPageState createState() => _PageRegisterPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _PageRegisterPageState extends State<PageRegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   var loginBloc = LoginModule.to.getBloc<LoginBloc>();
-  var bloc = LoginModule.to.getBloc<PageRegisterBloc>();
+  var bloc = LoginModule.to.getBloc<RegisterBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -195,4 +196,7 @@ class _PageRegisterPageState extends State<PageRegisterPage> {
       ),
     );
   }
+}
+
+class PageRegisterBloc {
 }

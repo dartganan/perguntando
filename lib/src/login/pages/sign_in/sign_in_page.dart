@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../../login_bloc.dart';
 import '../../login_module.dart';
 
-class PageLoginPage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
-  _PageLoginPageState createState() => _PageLoginPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class _PageLoginPageState extends State<PageLoginPage> {
+class _SignInPageState extends State<SignInPage> {
   var bloc = LoginModule.to.getBloc<LoginBloc>();
   
   @override
