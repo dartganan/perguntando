@@ -8,15 +8,14 @@ import 'package:validators/validators.dart' as validators;
 
 import '../../login_bloc.dart';
 import '../../login_module.dart';
-import 'page_login_bloc.dart';
+import 'sign_in_bloc.dart';
 
-class PageLoginPage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
-  _PageLoginPageState createState() => _PageLoginPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
-
-class _PageLoginPageState extends State<PageLoginPage> {
-  final bloc = LoginModule.to.bloc<PageLoginBloc>();
+class _SignInPageState extends State<SignInPage> {
+  var bloc = LoginModule.to.getBloc<SignInBloc>();
   final loginBloc = LoginModule.to.bloc<LoginBloc>();
   final authBloc = AppModule.to.bloc<AuthBloc>();
   @override
@@ -24,7 +23,6 @@ class _PageLoginPageState extends State<PageLoginPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-//        color: Colors.greenAccent,
         alignment: Alignment.center,
         padding: EdgeInsets.all(25),
         height: MediaQuery.of(context).size.height,
@@ -92,6 +90,7 @@ class _PageLoginPageState extends State<PageLoginPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
                       child: TextFormField(
                         validator: (v) {
@@ -134,6 +133,7 @@ class _PageLoginPageState extends State<PageLoginPage> {
                       height: 20,
                     ),
                     Container(
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
                       child: TextFormField(
                         validator: (v) {

@@ -3,8 +3,8 @@ import 'package:perguntando/src/login/login_module.dart';
 import 'package:radial_button/widget/circle_floating_button.dart';
 
 import 'login_bloc.dart';
-import 'pages/page_login/page_login_page.dart';
-import 'pages/page_register/page_register_page.dart';
+import 'pages/page_register/register_page.dart';
+import 'pages/sign_in/sign_in_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,25 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var bloc = LoginModule.to.getBloc<LoginBloc>();
-
-  var itemsActionBar = [
-    FloatingActionButton(
-      backgroundColor: Colors.greenAccent,
-      onPressed: () {},
-      child: Icon(Icons.add),
-    ),
-    FloatingActionButton(
-      backgroundColor: Colors.indigoAccent,
-      onPressed: () {},
-      child: Icon(Icons.camera),
-    ),
-    FloatingActionButton(
-      backgroundColor: Colors.orangeAccent,
-      onPressed: () {},
-      child: Icon(Icons.card_giftcard),
-    ),
-  ];
+  var bloc = LoginModule.to.getBloc<LoginBloc>();  
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +37,8 @@ class _LoginPageState extends State<LoginPage> {
           PageView(
             physics: NeverScrollableScrollPhysics(),
             controller: bloc.pageController,
-            children: <Widget>[PageLoginPage(), PageRegisterPage()],
-          ),
-          Positioned(
-              top: 0,
-              left: -60,
-              child: CircleFloatingButton(
-                position: Position.top,
-                type: CircleType.quarterPart,
-                items: itemsActionBar,
-                buttonColor: Colors.transparent,
-                buttonIcon: Icons.no_encryption,
-                duration: Duration(milliseconds: 500),
-              ))
+            children: <Widget>[SignInPage(), RegisterPage()],
+          ),         
         ],
       ),
     );

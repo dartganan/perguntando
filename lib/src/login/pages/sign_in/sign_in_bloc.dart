@@ -8,7 +8,7 @@ import 'package:perguntando/src/shared/models/user_model.dart';
 import 'package:perguntando/src/shared/models/user_state.dart';
 import 'package:perguntando/src/shared/repositories/auth_repository.dart';
 
-class PageLoginBloc extends BlocBase {
+class SignInBloc extends BlocBase {
   final HasuraRepository _hasuraRepository;
   final AuthBloc _authBloc;
   final formKey = GlobalKey<FormState>();
@@ -16,7 +16,7 @@ class PageLoginBloc extends BlocBase {
   String email;
   String password;
 
-  PageLoginBloc(this._authBloc, this._hasuraRepository);
+  SignInBloc(this._authBloc, this._hasuraRepository);
 
   void onLogin() async {
     FormState _formState = formKey.currentState;
