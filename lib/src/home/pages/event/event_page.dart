@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:perguntando/src/home/pages/question/question_module.dart';
 import 'package:perguntando/src/shared/utils/multlerp.dart';
 import 'package:perguntando/src/shared/widgets/scrollable_content/scrollable_content_widget.dart';
 
+import '../question/question_module.dart';
 import 'components/card_event.dart';
+import 'event_module.dart';
+import 'event_bloc.dart';
 
 class EventPage extends StatefulWidget {
   @override
@@ -12,31 +14,7 @@ class EventPage extends StatefulWidget {
 }
 
 class _EventPageState extends State<EventPage> {
-  PageController _pageController;
-  ScrollController _backgroundController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(viewportFraction: 0.65);
-    _backgroundController = ScrollController();
-
-    _pageController.addListener(() {
-      var _backgroundOffset = _pageController.offset *
-          _backgroundController.position.maxScrollExtent /
-          _pageController.position.maxScrollExtent;
-          
-      _backgroundController.position.jumpTo(_backgroundOffset);
-    });
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    _backgroundController.dispose();
-    super.dispose();
-  }
-
+  final bloc =EventModule.to.bloc<EventBloc>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +23,7 @@ class _EventPageState extends State<EventPage> {
         ListView.builder(
           // reverse: true,
           scrollDirection: Axis.horizontal,
-          controller: _backgroundController,
+          controller: bloc.backgroundController,
           itemCount: 5,
           itemBuilder: (context, index) {
             return Image.network(
@@ -59,10 +37,10 @@ class _EventPageState extends State<EventPage> {
           },
         ),
         AnimatedBuilder(
-          animation: _pageController,
+          animation: bloc.pageController,
           builder: (context, snapshot) {
-            var value = _pageController.positions.isNotEmpty
-                ? _pageController?.page ?? 0.0
+            var value = bloc.pageController.positions.isNotEmpty
+                ? bloc.pageController?.page ?? 0.0
                 : 0.0;
             var countPage = 5;
             Color color = MultiLerpColor.lerpFromCount(countPage, value: value);
@@ -108,7 +86,7 @@ class _EventPageState extends State<EventPage> {
                   width: double.infinity,
                   height: 280,
                   child: PageView.builder(
-                    controller: _pageController,
+                    controller: bloc.pageController,
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       String tag = "question_$index";
