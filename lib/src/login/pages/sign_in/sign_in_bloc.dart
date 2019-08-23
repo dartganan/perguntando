@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:perguntando/src/repository/hasura_repository.dart';
 
 import 'package:perguntando/src/shared/blocs/auth_bloc.dart';
 import 'package:perguntando/src/shared/models/user_model.dart';
@@ -10,14 +11,15 @@ import 'package:perguntando/src/shared/models/user_state.dart';
 import 'package:perguntando/src/shared/repositories/auth_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PageLoginBloc extends BlocBase {
+class SignInBloc extends BlocBase {
+  final HasuraRepository _hasuraRepository;
   final AuthBloc _authBloc;
   final formKey = GlobalKey<FormState>();
 
   String email;
   String password;
 
-  PageLoginBloc(this._authBloc);
+  SignInBloc(this._authBloc, this._hasuraRepository);
 
   void onLogin() async {
     SharedPreferences _sharedPreferences =

@@ -12,7 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthBloc extends BlocBase {
   final _userController = BehaviorSubject<UserModel>();
-  final _tokenController = BehaviorSubject<String>();
   final authRepository = AuthRepository();
   final _userStateController =
       BehaviorSubject<AuthState>.seeded(NotAuthenticated());
@@ -24,6 +23,7 @@ class AuthBloc extends BlocBase {
   Observable<UserModel> get outUser => _userController.stream;
   Sink<UserModel> get inUser => _userController.sink;
   UserModel get userControleValue => _userController.value;
+
   Future<bool> isLogin() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.containsKey('user')) {
@@ -43,22 +43,23 @@ class AuthBloc extends BlocBase {
     } else {
       return false;
     }
-
-    
   }
-  AuthRepository getAuthRepository() {
-    while (true) {
-      try {
-        return AppModule.to.get<AuthRepository>();
-      } catch (e) {}
-    }
+
+  Future<void> logOff() async {
+    try {
+      _userController.add(null);
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      await sharedPreferences.remove('user');
+      await sharedPreferences.remove('token');
+      await sharedPreferences.remove('credentials');
+    } catch (e) {}
   }
 
   @override
   void dispose() {
     tokenSub.cancel();
     _userStateController.close();
-    _tokenController.close();
     _userController.close();
     super.dispose();
   }
