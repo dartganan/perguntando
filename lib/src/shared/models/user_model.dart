@@ -11,16 +11,14 @@ class UserModel {
       {this.idUser,
       this.name,
       this.email,
-      this.password,
       this.infoDate,
       this.photo,
       this.githubUser});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    idUser = json['id_user'];
+    idUser = json['id'];
     name = json['name'];
-    email = json['email'];
-    password = json['password'];
+    email = json['mail'];
     infoDate = json['info_date'];
     photo = json['photo'];
     githubUser = json['github_user'];
@@ -31,7 +29,6 @@ class UserModel {
     data['id_user'] = this.idUser;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['password'] = this.password;
     data['info_date'] = this.infoDate;
     data['photo'] = this.photo;
     data['github_user'] = this.githubUser;

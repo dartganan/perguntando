@@ -14,16 +14,14 @@ class LoginModule extends ModuleWidget {
   List<Bloc> get blocs => [
         Bloc((i) => SignInBloc(
               AppModule.to.bloc<AuthBloc>(),
-              i.get<HasuraRepository>(),
+              AppModule.to.get<HasuraRepository>(),
             )),
         Bloc((i) => RegisterBloc()),
         Bloc((i) => LoginBloc()),
       ];
 
   @override
-  List<Dependency> get dependencies => [
-        Dependency((i) => AppModule.to.get<HasuraRepository>()),
-      ];
+  List<Dependency> get dependencies => [];
 
   @override
   Widget get view => LoginPage();

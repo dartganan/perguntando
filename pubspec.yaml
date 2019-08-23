@@ -27,6 +27,7 @@ dependencies:
   rxdart: ^0.22.1+1
   bloc_pattern: ^2.3.0
   validators: ^2.0.0+1
+  shared_preferences: ^0.5.3+4
   flutter:
     sdk: flutter
   onesignal_flutter: ^2.0.2

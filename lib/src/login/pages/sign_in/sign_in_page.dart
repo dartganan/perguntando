@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/app_module.dart';
+import 'package:perguntando/src/home/home_module.dart';
 import 'package:perguntando/src/shared/blocs/auth_bloc.dart';
 import 'package:perguntando/src/shared/models/user_state.dart';
 
@@ -18,6 +19,21 @@ class _SignInPageState extends State<SignInPage> {
   var bloc = LoginModule.to.getBloc<SignInBloc>();
   final loginBloc = LoginModule.to.bloc<LoginBloc>();
   final authBloc = AppModule.to.bloc<AuthBloc>();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    authBloc.outUser.listen((v) {
+      if(v != null)
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeModule(),
+        ),
+      );
+    });
+    authBloc.inUserState.add(NotAuthenticated());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

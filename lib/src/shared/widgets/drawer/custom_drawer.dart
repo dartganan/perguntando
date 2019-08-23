@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/app_module.dart';
+import 'package:perguntando/src/login/login_module.dart';
 import 'package:perguntando/src/shared/blocs/auth_bloc.dart';
+import 'package:perguntando/src/splash/splash_page.dart';
 
 import '../../models/user_model.dart';
 
@@ -47,12 +49,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                             currentAccountPicture: CircleAvatar(
                               minRadius: 10,
                               maxRadius: 15,
-                              backgroundImage: NetworkImage(
-                                snapshot.data != null && snapshot.hasData
-                                    ? snapshot?.data?.photo ??
-                                        "https://media.istockphoto.com/vectors/man-avatar-icon-man-flat-icon-man-faceless-avatar-man-character-vector-id1027708446"
-                                    : "https://media.istockphoto.com/vectors/man-avatar-icon-man-flat-icon-man-faceless-avatar-man-character-vector-id1027708446",
-                              ),
+                              backgroundImage: NetworkImage(snapshot.hasData
+                                  ? snapshot?.data?.photo
+                                  : "https://media.istockphoto.com/vectors/man-avatar-icon-man-flat-icon-man-faceless-avatar-man-character-vector-id1027708446"),
                             ),
                           );
                         }),
@@ -95,6 +94,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     "SAIR",
                     style: TextStyle(color: Colors.black),
                   ),
+                  onTap: () async {
+                    await AppModule.to.bloc<AuthBloc>().logOff();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginModule(),
+                        ));
+                  },
                 ),
               ),
             ],
