@@ -243,7 +243,7 @@ class _SignInPageState extends State<SignInPage> {
                           }),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 12,
                     ),
                     Container(
                       padding: EdgeInsets.all(20),
