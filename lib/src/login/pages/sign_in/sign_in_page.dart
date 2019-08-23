@@ -58,9 +58,11 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 child: Column(
                   children: <Widget>[
-                    Text(
-                      "Perguntando",
-                      style: TextStyle(color: Colors.white, fontSize: 40),
+                    FittedBox(
+                                          child: Text(
+                        "Perguntando",
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
