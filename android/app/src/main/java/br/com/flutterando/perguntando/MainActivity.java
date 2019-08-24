@@ -1,4 +1,4 @@
-package com.example.perguntando;
+package br.com.flutterando.perguntando;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

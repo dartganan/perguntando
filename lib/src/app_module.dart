@@ -1,3 +1,4 @@
+import 'package:perguntando/src/splash/splash_bloc.dart';
 import 'package:perguntando/src/shared/blocs/auth_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'repository/hasura_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => SplashBloc()),
         Bloc((i) => AuthBloc()),
         Bloc((i) => AppBloc()),
       ];
