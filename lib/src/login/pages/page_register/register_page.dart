@@ -36,26 +36,28 @@ class _RegisterPageState extends State<RegisterPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 2,
-                    margin: EdgeInsets.only(right: 10),
-                    color: Colors.white,
+                  Expanded(
+                    child: Container(
+                      height: 2,
+                      margin: EdgeInsets.only(right: 10),
+                      color: Colors.white,
+                    ),
                   ),
                   Text(
                     "CADASTRO",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
-                  Container(
-                    width: 100,
-                    height: 2,
-                    margin: EdgeInsets.only(left: 10),
-                    color: Colors.white,
+                  Expanded(
+                    child: Container(
+                      height: 2,
+                      margin: EdgeInsets.only(left: 10),
+                      color: Colors.white,
+                    ),
                   )
                 ],
               ),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Form(
                 child: Column(
@@ -147,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
                     Container(
                       height: 46,
@@ -167,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 10,
                     ),
                     Container(
                       padding: EdgeInsets.all(20),
