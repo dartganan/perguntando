@@ -150,9 +150,9 @@ class _SignInPageState extends State<SignInPage> {
                                 BorderSide(color: Colors.blue, width: 2),
                           ),
                           hasFloatingPlaceholder: false,
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
+                          hintText: "email",
+                          hintStyle: TextStyle(
+                                       color: Color(0xffA7A7A7),
                           ),
                         ),
                       ),
@@ -192,9 +192,9 @@ class _SignInPageState extends State<SignInPage> {
                                 BorderSide(color: Colors.blue, width: 2),
                           ),
                           hasFloatingPlaceholder: false,
-                          labelText: "Senha",
-                          labelStyle: TextStyle(
-                            color: Color(0xffA7A7A7),
+                          hintText: "password",
+                          hintStyle: TextStyle(
+                                       color: Color(0xffA7A7A7),
                           ),
                         ),
                         obscureText: true,
