@@ -4,7 +4,7 @@ import 'presenter_model.dart';
 
 class LectureModel {
   int idLecture;
-  String name;
+  String title;
   String description;
   String infoDate;
   int idEvent;
@@ -12,7 +12,7 @@ class LectureModel {
 
   LectureModel(
       {this.idLecture,
-      this.name,
+      this.title,
       this.description,
       this.infoDate,
       this.idEvent,
@@ -22,7 +22,7 @@ class LectureModel {
 
   LectureModel.fromJson(Map<String, dynamic> json) {
     idLecture = json['id_lecture'];
-    name = json['name'];
+    title = json['title'];
     description = json['description'];
     infoDate = format(DateTime.tryParse(json['info_date']),'dd/MM/yyyy');
     idEvent = json['id_event'];
@@ -34,7 +34,7 @@ class LectureModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id_lecture'] = this.idLecture;
-    data['name'] = this.name;
+    data['title'] = this.title;
     data['description'] = this.description;
     data['info_date'] = this.infoDate;
     data['id_event'] = this.idEvent;

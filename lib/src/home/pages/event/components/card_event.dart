@@ -84,7 +84,7 @@ class CardEvent extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     child: Text(
-                      "${lectureModel?.name}",
+                      "${lectureModel?.title}",
                       style: TextStyle(color: Colors.grey[700], fontSize: 18),
                     ),
                   ),

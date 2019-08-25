@@ -12,7 +12,7 @@ class HomeRepository extends Disposable {
     var query = '''subscription {
                       event(where: {info_status: {_eq: true}}, order_by: {info_date: asc}) {
                         id_event
-                        name
+                        title
                         description
                         url_photo
                         color
@@ -23,11 +23,12 @@ class HomeRepository extends Disposable {
                         location
                         lectures{
                           id_lecture
-                          name
+                          title
                           description
                           info_date
                           presenter {
                             name
+                            photo
                           }
                         }
                       }

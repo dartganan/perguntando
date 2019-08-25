@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                     var date = DateTime.tryParse(snapshot?.data[index]?.infoDate);
 
                     return CardWidget(
-                      title: snapshot.data[index].name,
+                      title: snapshot.data[index].title,
                       subtitle:
                           "${snapshot.data[index].city}/${snapshot.data[index].state}",
                       date:

@@ -26,22 +26,7 @@ class _EventPageState extends State<EventPage> {
     return Scaffold(
         body: Stack(
       children: <Widget>[
-        ListView.builder(
-          // reverse: true,
-          scrollDirection: Axis.horizontal,
-          controller: bloc.backgroundController,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Image.network(
-              index.isEven
-                  ? "https://i2.wp.com/flutterando.com.br/wp-content/uploads/2019/06/3305e16d-a366-4c00-8e37-f180cc55fb01-e1560863231414.jpg?w=1080&ssl=1"
-                  : "https://i.udemycdn.com/user/200_H/51101684_c590_2.jpg",
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              fit: BoxFit.cover,
-            );
-          },
-        ),
+ 
         AnimatedBuilder(
           animation: bloc.pageController,
           builder: (context, snapshot) {
@@ -50,7 +35,7 @@ class _EventPageState extends State<EventPage> {
                 : 0.0;
             var countPage = 5;
             Color color = MultiLerpColor.lerpFromCount(countPage, value: value);
-            return Container(color: color.withOpacity(0.5));
+            return Container(color: color);
           },
         ),
         Container(
@@ -65,7 +50,7 @@ class _EventPageState extends State<EventPage> {
                       "${widget.eventModel?.urlPhoto}"),
                 ),
                 Container(height: 10,),
-                Text("${widget.eventModel?.name}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18 ),),
+                Text("${widget.eventModel?.title}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18 ),),
                 Container(height: 10,),
                 Text("${widget.eventModel?.infoDate}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
                 Container(height: 15,),

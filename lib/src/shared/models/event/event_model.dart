@@ -2,7 +2,7 @@ import 'package:perguntando/src/shared/models/event/lecture_model.dart';
 
 class EventModel {
   int idEvent;
-  String name;
+  String title;
   String description;
   String urlPhoto;
   String color;
@@ -15,7 +15,7 @@ class EventModel {
 
   EventModel(
       {this.idEvent,
-      this.name,
+      this.title,
       this.description,
       this.urlPhoto,
       this.color,
@@ -28,7 +28,7 @@ class EventModel {
 
   EventModel.fromJson(Map<String, dynamic> json) {
     idEvent = json['id_event'];
-    name = json['name'];
+    title = json['title'];
     description = json['description'];
     urlPhoto = json['url_photo'];
     color = json['color'];
@@ -48,7 +48,7 @@ class EventModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id_event'] = this.idEvent;
-    data['name'] = this.name;
+    data['title'] = this.title;
     data['description'] = this.description;
     data['url_photo'] = this.urlPhoto;
     data['color'] = this.color;

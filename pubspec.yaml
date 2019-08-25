@@ -25,7 +25,7 @@ dependencies:
   radial_button: ^0.1.2
   dio: ^2.1.13
   rxdart: ^0.22.1+1
-  bloc_pattern: ^2.3.0
+  bloc_pattern: ^2.3.1
   validators: ^2.0.0+1
   shared_preferences: ^0.5.3+4
   flutter:
