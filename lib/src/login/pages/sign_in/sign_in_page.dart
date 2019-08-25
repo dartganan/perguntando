@@ -45,8 +45,13 @@ class _SignInPageState extends State<SignInPage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              FlutterLogo(
-                size: 130,
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 100,
+                width: 100,
+                child: Image.asset("assets/logo.png"),
               ),
               SizedBox(
                 height: 20,
@@ -61,7 +66,7 @@ class _SignInPageState extends State<SignInPage> {
                     FittedBox(
                                           child: Text(
                         "Perguntando",
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                        style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
                     ),
                     Row(
@@ -90,7 +95,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   Text(
                     "LOGIN",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                   Container(
                     width: 100,
