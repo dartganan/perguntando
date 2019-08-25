@@ -11,7 +11,7 @@ import 'event_module.dart';
 import 'event_bloc.dart';
 
 class EventPage extends StatefulWidget {
-   final EventModel eventModel;
+  final EventModel eventModel;
 
   const EventPage({Key key, this.eventModel}) : super(key: key);
 
@@ -20,13 +20,12 @@ class EventPage extends StatefulWidget {
 }
 
 class _EventPageState extends State<EventPage> {
-  final bloc =EventModule.to.bloc<EventBloc>();
+  final bloc = EventModule.to.bloc<EventBloc>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
       children: <Widget>[
- 
         AnimatedBuilder(
           animation: bloc.pageController,
           builder: (context, snapshot) {
@@ -44,18 +43,35 @@ class _EventPageState extends State<EventPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             padding: const EdgeInsets.symmetric(horizontal: 20),
             children: <Widget>[
-                       CircleAvatar(
-                  maxRadius: 40,
-                  backgroundImage: CachedNetworkImageProvider(
-                      "${widget.eventModel?.urlPhoto}"),
-                ),
-                Container(height: 10,),
-                Text("${widget.eventModel?.title}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18 ),),
-                Container(height: 10,),
-                Text("${DateFormat('dd/MM/yyyy').format(widget.eventModel?.infoDate)}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
-                Container(height: 15,),
-                Text(
-                    "${widget.eventModel?.description}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
+              CircleAvatar(
+                maxRadius: 40,
+                backgroundImage: CachedNetworkImageProvider(
+                    "${widget.eventModel?.urlPhoto}"),
+              ),
+              Container(
+                height: 10,
+              ),
+              Text(
+                "${widget.eventModel?.title}",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+              Container(
+                height: 10,
+              ),
+              Text(
+                "${DateFormat('dd/MM/yyyy').format(widget.eventModel?.infoDate)}",
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
+              Container(
+                height: 15,
+              ),
+              Text(
+                "${widget.eventModel?.description}",
+                style: TextStyle(color: Colors.white, fontSize: 14),
+              ),
             ],
             button: SafeArea(
               child: Container(
@@ -75,17 +91,18 @@ class _EventPageState extends State<EventPage> {
                         tag: tag,
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  fullscreenDialog: true,
-                                  builder: (BuildContext context) {
-                                    return QuestionModule(tag);
-                                  }));
+                            context,
+                            MaterialPageRoute(
+                              fullscreenDialog: true,
+                              builder: (BuildContext context) {
+                                return QuestionModule(tag);
+                              },
+                            ),
+                          );
                         },
                       );
                     },
                   ),
-               
                 ),
               ),
             ),
@@ -99,7 +116,6 @@ class _EventPageState extends State<EventPage> {
           ),
         ),
       ],
-    )
-        );
+    ));
   }
 }
