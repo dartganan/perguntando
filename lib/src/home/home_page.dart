@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   itemCount: snapshot.data.length,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (_, index) {
-                    var date = DateTime.tryParse(snapshot?.data[index]?.infoDate);
+                    var date = snapshot?.data[index]?.infoDate;
 
                     return CardWidget(
                       title: snapshot.data[index].title,

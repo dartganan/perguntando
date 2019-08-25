@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:perguntando/src/home/pages/question/question_module.dart';
 import 'package:perguntando/src/shared/models/event/event_model.dart';
 import 'package:perguntando/src/shared/utils/multlerp.dart';
 import 'package:perguntando/src/shared/widgets/scrollable_content/scrollable_content_widget.dart';
-
 import '../question/question_module.dart';
 import 'components/card_event.dart';
 import 'event_module.dart';
@@ -52,7 +52,7 @@ class _EventPageState extends State<EventPage> {
                 Container(height: 10,),
                 Text("${widget.eventModel?.title}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18 ),),
                 Container(height: 10,),
-                Text("${widget.eventModel?.infoDate}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
+                Text("${DateFormat('dd/MM/yyyy').format(widget.eventModel?.infoDate)}", style: TextStyle(color: Colors.white, fontSize: 14 ),),
                 Container(height: 15,),
                 Text(
                     "${widget.eventModel?.description}", style: TextStyle(color: Colors.white, fontSize: 14 ),),

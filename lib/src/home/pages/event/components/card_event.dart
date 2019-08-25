@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:perguntando/src/shared/models/event/lecture_model.dart';
 
 class CardEvent extends StatelessWidget {
@@ -53,7 +54,7 @@ class CardEvent extends StatelessWidget {
                       child: Material(
                         color: Colors.transparent,
                         child: Text(
-                          "${lectureModel?.infoDate}",
+                          "${DateFormat('HH:mm').format(lectureModel?.infoDate)}",
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
@@ -103,7 +104,9 @@ class CardEvent extends StatelessWidget {
                       width: 3,
                     ),
                     Text(
-                      "+99",
+                      lectureModel.counter > 99
+                          ? "+99"
+                          : "${lectureModel.counter}",
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                   ],

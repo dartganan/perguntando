@@ -6,7 +6,7 @@ class EventModel {
   String description;
   String urlPhoto;
   String color;
-  String infoDate;
+  DateTime infoDate;
   bool infoStatus;
   String city;
   String state;
@@ -32,7 +32,7 @@ class EventModel {
     description = json['description'];
     urlPhoto = json['url_photo'];
     color = json['color'];
-    infoDate = json['info_date'];
+    infoDate = DateTime.tryParse(json['info_date']);
     infoStatus = json['info_status'];
     city = json['city'];
     state = json['state'];
@@ -52,7 +52,7 @@ class EventModel {
     data['description'] = this.description;
     data['url_photo'] = this.urlPhoto;
     data['color'] = this.color;
-    data['info_date'] = this.infoDate;
+    data['info_date'] = this.infoDate.toString();
     data['info_status'] = this.infoStatus;
     data['city'] = this.city;
     data['state'] = this.state;

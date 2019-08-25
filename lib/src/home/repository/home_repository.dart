@@ -30,6 +30,11 @@ class HomeRepository extends Disposable {
                             name
                             photo
                           }
+                          counter:lecture_questions_aggregate {
+                          aggregate {
+                           count(columns: id_lecture_question)
+                          }
+                         }
                         }
                       }
                     }''';
