@@ -8,10 +8,10 @@ class HomeBloc extends BlocBase {
   final HomeRepository _repository;
 
   HomeBloc(this._repository) {
-    eventsStream = Observable(_repository.getEvents()).shareValue();
+    events = _repository.getEvents();
   }
 
-  Observable<List<EventModel>> eventsStream;
+ Future<List<EventModel>> events;
 
   @override
   void dispose() {

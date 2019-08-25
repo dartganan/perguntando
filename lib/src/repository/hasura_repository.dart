@@ -15,9 +15,9 @@ class HasuraRepository extends Disposable {
   Future<UserModel> getUser(UserModel user) async {
     String query = '''getUser(\$email:String!, \$pwd:String!){
                         user(where: {email: {_eq: \$email}, password: {_eq: \$pwd}}) {
-                          id_user
+                          id
                           name
-                          email
+                          mail
                           info_date
                           photo
                           github_user

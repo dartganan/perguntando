@@ -24,8 +24,8 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           BackgroundWidget(),
-          StreamBuilder<List<EventModel>>(
-              stream: _bloc.eventsStream,
+          FutureBuilder<List<EventModel>>(
+              future: _bloc.events,
               builder: (context, snapshot) {
                 if (!snapshot.hasData || snapshot == null) {
                   return Center(
@@ -43,10 +43,10 @@ class _HomePageState extends State<HomePage> {
                   itemCount: snapshot.data.length,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (_, index) {
-                    var date = DateTime.parse(snapshot?.data[index]?.infoDate);
+                    var date = snapshot?.data[index]?.infoDate;
 
                     return CardWidget(
-                      title: snapshot.data[index].name,
+                      title: snapshot.data[index].title,
                       subtitle:
                           "${snapshot.data[index].city}/${snapshot.data[index].state}",
                       date:
@@ -56,7 +56,9 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return EventModule();
+                          return EventModule(
+                            snapshot.data[index]
+                          );
                         }));
                       },
                     );

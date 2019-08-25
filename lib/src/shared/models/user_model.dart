@@ -26,9 +26,9 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_user'] = this.idUser;
+    data['id'] = this.idUser;
     data['name'] = this.name;
-    data['email'] = this.email;
+    data['mail'] = this.email;
     data['info_date'] = this.infoDate;
     data['photo'] = this.photo;
     data['github_user'] = this.githubUser;
