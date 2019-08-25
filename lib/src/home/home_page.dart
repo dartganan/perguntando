@@ -24,8 +24,8 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           BackgroundWidget(),
-          StreamBuilder<List<EventModel>>(
-              stream: _bloc.eventsStream,
+          FutureBuilder<List<EventModel>>(
+              future: _bloc.events,
               builder: (context, snapshot) {
                 if (!snapshot.hasData || snapshot == null) {
                   return Center(
