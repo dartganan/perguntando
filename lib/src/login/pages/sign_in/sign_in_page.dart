@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:core' as prefix0;
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:perguntando/src/app_module.dart';
 import 'package:perguntando/src/home/home_module.dart';
@@ -15,21 +17,24 @@ class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
 }
+
 class _SignInPageState extends State<SignInPage> {
   var bloc = LoginModule.to.getBloc<SignInBloc>();
   final loginBloc = LoginModule.to.bloc<LoginBloc>();
   final authBloc = AppModule.to.bloc<AuthBloc>();
+  final _keyButton = GlobalKey();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     authBloc.outUser.listen((v) {
-      if(v != null)
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => HomeModule(),
-        ),
-      );
+      if (v != null)
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => HomeModule(),
+          ),
+        );
     });
     authBloc.inUserState.add(NotAuthenticated());
   }
@@ -64,7 +69,7 @@ class _SignInPageState extends State<SignInPage> {
                 child: Column(
                   children: <Widget>[
                     FittedBox(
-                                          child: Text(
+                      child: Text(
                         "Perguntando",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
@@ -220,31 +225,9 @@ class _SignInPageState extends State<SignInPage> {
                           initialData: NotAuthenticated(),
                           builder: (context, snapshot) {
                             if (snapshot.data is Loading) {
-                              return RaisedButton(
-                                shape: StadiumBorder(),
-                                color: Colors.blue,
-                                onPressed: bloc.onLogin,
-                                child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 40),
-                                    child: CircularProgressIndicator(
-                                        backgroundColor: Colors.white)),
-                              );
+                              return _buttonEnter(true);
                             }
-                            return RaisedButton(
-                              shape: StadiumBorder(),
-                              color: Colors.blue,
-                              onPressed: bloc.onLogin,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 40),
-                                child: Text(
-                                  "ENTRAR",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            );
+                            return _buttonEnter(false);
                           }),
                     ),
                     SizedBox(
@@ -267,13 +250,40 @@ class _SignInPageState extends State<SignInPage> {
                               fontWeight: FontWeight.w400),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buttonEnter(bool isLoading) {
+    return AnimatedContainer(
+      key: _keyButton,
+      duration: Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+      decoration: BoxDecoration(
+          color: Colors.blue, borderRadius: BorderRadius.circular(40)),
+      height: 30,
+      width: isLoading ? 48 : 150,
+      alignment: Alignment.center,
+      child: InkWell(
+        onTap: bloc.onLogin,
+        child: !isLoading
+            ? Text(
+                "ENTRAR",
+                textAlign: TextAlign.center,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              )
+            : Padding(
+                padding: EdgeInsets.all(10),
+                child:
+                    CircularProgressIndicator(backgroundColor: Colors.white)),
       ),
     );
   }
