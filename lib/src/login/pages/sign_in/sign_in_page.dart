@@ -200,6 +200,23 @@ class _SignInPageState extends State<SignInPage> {
                         obscureText: true,
                       ),
                     ),
+                    Container(
+                      padding: EdgeInsets.only(top: 20),
+                      width: double.infinity,
+                      child: GestureDetector(
+                        onTap: () {
+                         
+                        },
+                        child: Text(
+                          "esqueci minha senha",
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                              color: Color(0xffA7A7A7),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ),
                     StreamBuilder<AuthState>(
                         stream: authBloc.outUserState,
                         builder: (context, snapshot) {
@@ -231,7 +248,7 @@ class _SignInPageState extends State<SignInPage> {
                           }),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 15,
                     ),
                     Container(
                       padding: EdgeInsets.all(20),
