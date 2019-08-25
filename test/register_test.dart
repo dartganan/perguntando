@@ -9,7 +9,7 @@ main() {
     final user = UserModel(
       email: 'alvaro@flutterando.com.br',
       name: 'Alvaro Vasconcelos',
-      password: '123',
+     
     );
     HasuraConnect hasuraConnect = HasuraConnect(HASURA_URL,
         headers: {'x-hasura-admin-secret': 'flutterando@2019'});
