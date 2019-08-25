@@ -1,15 +1,15 @@
-import 'package:bloc_pattern/bloc_pattern.dart';
+
 import 'package:hasura_connect/hasura_connect.dart';
 import 'package:perguntando/src/shared/models/event/event_model.dart';
 
-class HomeRepository extends Disposable {
+class HomeRepository {
   final HasuraConnect _conn;
 
   HomeRepository(this._conn);
-  Snapshot snapshot;
 
-  Stream<List<EventModel>> getEvents() {
-    var query = '''subscription {
+
+  Future<List<EventModel>> getEvents() async{
+    var query = '''query {
                       event(where: {info_status: {_eq: true}}, order_by: {info_date: asc}) {
                         id_event
                         title
@@ -39,10 +39,13 @@ class HomeRepository extends Disposable {
                       }
                     }''';
     try {
-      snapshot = _conn.subscription(query);
-      return snapshot.stream.map(
-        (json) => EventModel.fromJsonList(json['data']['event']),
-      );
+     final queryResult = await _conn.query(query);
+
+     final result = EventModel.fromJsonList(queryResult['data']['event'] as List);
+     
+     
+
+      return result;
     } on HasuraError catch (e) {
       print('LOGX ==:>> ERROR[getEvents]');
       print(e);
@@ -52,8 +55,4 @@ class HomeRepository extends Disposable {
     }
   }
 
-  @override
-  void dispose() {
-    snapshot.close();
-  }
 }
